@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+    <link href="{{ url_for('static', filename='css/style.css') }}" rel="stylesheet" type="text/css">
+    <title>TV Shows</title>
+</head>
+<body>
+    <div class="container">
+        <header class="d-flex flex-wrap justify-content-between py-3 mb-4">
+            <h1>Add a New Show!</h1>
+            <ul class="nav nav-pills">
+                <li class="nav-item"><a href="/shows" class="nav-link">TV Shows</a></li>
+                <li class="nav-item"><a href="/logout" class="nav-link">logout</a></li>
+            </ul>
+        </header>   
+        <form action="/add" method="post">
+            <input type="hidden" name="user_id" value="{{this_user['id']}}">
+            <div class="row align-items-md-stretch h-100 p-5 text-bg-dark rounded-3 col-md-9 pe-5">
+            {% with messages = get_flashed_messages(category_filter=['add']) %}
+                {% if messages %}
+                    <div>
+                        <p class="fw-bold text-decoration-underline errors">Error adding new ride</p>
+                        <ul>
+                        {% for message in messages: %}
+                            <li class="errors">{{message}}</li>
+                        {% endfor %}
+                        </ul>
+                    </div>
+                {% endif %}
+            {% endwith %}
+                <div class="row mb-3">
+                    <label for="title" class="col-sm-3 col-form-label">Title: </label>
+                    <div class="col-sm-9">
+                        <input type="text" name="title" class="form-control">
+                    </div>
+                </div>
+                <div class="row mb-3">
+                    <label for="network" class="col-sm-3 col-form-label">Network: </label>
+                    <div class="col-sm-9">
+                        <input type="text" name="network" class="form-control">
+                    </div>
+                </div>
+                <div class="row mb-3">
+                    <label for="release_date" class="col-sm-3 col-form-label">Release Date: </label>
+                    <div class="col-sm-9">
+                        <input type="date" name="release_date" class="form-control">
+                    </div>
+                </div>
+                <div class="row mb-3">
+                    <label for="description" class="col-sm-3 col-form-label">Description: </label>
+                    <div class="col-sm-9">
+                        <textarea name="description" class="form-control" rows="3"></textarea>
+                    </div>
+                </div>
+                <div class="h-25 d-flex flex-row-reverse align-items-end pe-5">
+                    <button class="btn btn-outline-light px-5" type="submit">Add</button>
+                </div>
+            </div>
+        </form>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
+</body>
+</html>

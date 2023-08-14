@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+    <link href="{{ url_for('static', filename='css/style.css') }}" rel="stylesheet" type="text/css">
+    <title>TV Shows</title>
+</head>
+<body>
+    <div class="container">
+        <header class="d-flex flex-wrap justify-content-between py-3 mb-4">
+            <h2></h2>
+            <ul class="nav nav-pills">
+                <li class="nav-item"><a href="/shows" class="nav-link">TV Shows</a></li>
+                <li class="nav-item"><a href="/logout" class="nav-link">logout</a></li>
+            </ul>
+        </header>
+        <main>
+            <div class="border border-dark border-3 p-2 mb-5">
+                <div class="row align-items-end">
+                    <h1 class="col-7">{{this_show['title']}}</h1>
+                    <h4 class="col-5 likes">Liked by: {{like_count}}</h4>
+                </div>
+                <table class="table table-borderless">
+                    <tr>
+                        <td class="categories">Network: </td>
+                        <td>{{this_show['network']}}</td>
+                    </tr>
+                    <tr>
+                        <td>Release Date: </td>
+                        <td>{{this_show['release_date']}}</td>
+                    </tr>
+                    <tr>
+                        <td>Description: </td>
+                        <td>{{this_show['description']}}</td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>Posted By: </td>
+                        <td>{{this_show['user'].first_name}} {{this_show['user'].last_name}}</td>
+                    </tr>
+                </table>
+            </div>
+        </main>
+    </div>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
+    </body>
+    </html>

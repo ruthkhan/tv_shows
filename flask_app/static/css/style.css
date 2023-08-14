@@ -1,0 +1,14 @@
+/* index.html */
+h1.sitename {
+    color: blueviolet;
+}
+
+/* for all validations */
+.errors {
+    color:red; 
+}
+
+/* for all likes */
+.likes {
+    color: blueviolet;
+}
