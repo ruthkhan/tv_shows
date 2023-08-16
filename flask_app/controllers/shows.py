@@ -22,6 +22,12 @@ def view_ride(id):
     like_count = like.Like.count_likes(this_show.likes)
     return render_template("details.html", this_show=this_show, this_user=this_user, like_count=like_count)
 
+#Routes from shows page (shows.html)
+@app.route('/delete/<int:id>')
+def del_show(id): 
+    show.Show.delete(id)
+    return redirect('/shows')
+
 #Routes from new show page (new.html)
 @app.route('/add', methods=["POST"])
 def add_ride(): 
